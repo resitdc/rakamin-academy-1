@@ -1,0 +1,27 @@
+.box {
+  padding: 20px 30px;
+  background: #F44;
+  color: #FFF;
+  font-weight: bold;
+  display: inline-flex;
+  border-radius: 20px;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.box.box-biru {
+  background: #44F;
+}
+
+.box .box-image {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  background: #C3C3C3;
+}
+
+.box .box-name {
+  padding-left: 10px;
+  color: inherit;
+}

@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useContext, createContext } from "react";
+import "./style.css";
+import Box from "./Box";
+import BoxBiru from "./BoxBiru";
+import RakaminContext from "./RakaminContext";
 
-function App() {
+const App = () => {
+  let [name, setName] = useState("Rakamin Test");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <RakaminContext.Provider value={name}>
+      <div>
+
+        <Box />
+        <BoxBiru />
+
+      </div>
+    </RakaminContext.Provider>
+  )
 }
 
 export default App;
