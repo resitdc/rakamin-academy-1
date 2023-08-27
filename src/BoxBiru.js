@@ -6,8 +6,8 @@ const BoxBiru = () => {
   const name = useContext(RakaminContext);
 
   return (
-    <div class="box box-biru">
-      <div class="box-image"></div>
+    <div className="box box-biru">
+      <div className="box-image"></div>
       <BoxName name={name} />
     </div>
   )
