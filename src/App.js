@@ -1,47 +1,36 @@
-import React, { useState, useContext, createContext } from "react";
-import "./style.css";
-import Button from "./Button";
-import { ChakraProvider } from '@chakra-ui/react';
-import { BrowserRouter as Router, Switch, Routes, Route, Link } from "react-router-dom";
-import Home from "./pages/Home"
-
-const About = () => {
-  return (
-    <div>
-      <h1>About Me</h1>
-      <p>I'm Restu Dwi Cahyo</p>
-    </div>
-  );
-};
-
-const Contact = () => {
-  return (
-    <div>
-      <h1>Contact Me</h1>
-      <p>instagram : resitdc</p>
-    </div>
-  );
-};
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
 
 const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+  }
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+  }
 
   return (
     <Router>
-      <nav>
-        <ul>
-          <li> <Link to="/">Home</Link> </li>
-          <li> <Link to="/about">About</Link> </li>
-          <li> <Link to="/contact">Contact</Link> </li>
-        </ul>
+      <Routes>
+        <Route exact path="/login" element={isAuthenticated ? (
+          <Navigate to="/dashboard" />
+        ) : (
+          <Login handleLogin={handleLogin} />
+        )} />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </nav>
+
+
+        <Route path="/dashboard" element={isAuthenticated ?
+          <Dashboard handleLogout={handleLogout} />
+          : <Navigate to="/login" />} />
+      </Routes>
     </Router>
   );
-}
+};
 
 export default App;
